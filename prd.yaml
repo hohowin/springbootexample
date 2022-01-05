@@ -1,0 +1,39 @@
+---
+version: '2'
+
+networks:
+  studentnet:
+
+services:
+
+  postgres01:
+    container_name: postgres01
+    image: postgres:9.6.24-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=student
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_USER=postgres
+      - TZ=Asia/Hong_Kong
+    volumes:
+      - ./data/postgres01:/var/lib/postgresql/data
+      - ./sql/createdb.sql:/docker-entrypoint-initdb.d/1-createdb.sql
+    command: postgres
+    networks:
+      - studentnet
+
+  springboot01:
+    container_name: springboot01
+    image: ho1ho/myspringboot:0.1
+    restart: unless-stopped
+    depends_on:
+      - postgres01
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres01:5432/student
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=docker
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - 80:8080
+    networks:
+      - studentnet
