@@ -1,0 +1,25 @@
+---
+version: '2'
+
+networks:
+  studentnet:
+
+services:
+
+  postgres01:
+    container_name: postgres01
+    image: postgres:9.6.24-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=student
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_USER=postgres
+      - TZ=Asia/Hong_Kong
+    volumes:
+      - ./data/postgres01:/var/lib/postgresql/data
+      - ./sql/createdb.sql:/docker-entrypoint-initdb.d/1-createdb.sql
+    ports:
+      - 5432:5432
+    command: postgres
+    networks:
+      - studentnet
