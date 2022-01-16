@@ -20,12 +20,12 @@ public class StudentController {
 
     @GetMapping
     List<Student> getStudents() {
-        return studentService.getStudents();
+        return studentService.getAllStudents();
     }
 
     @PostMapping
     public void registerNewStudent(@RequestBody Student student) {
-        studentService.addNewStudent(student);
+        studentService.addStudent(student);
     }
 
     @DeleteMapping(path = "{studentId}")
