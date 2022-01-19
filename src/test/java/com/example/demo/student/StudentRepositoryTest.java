@@ -1,6 +1,7 @@
 package com.example.demo.student;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -14,8 +15,9 @@ class StudentRepositoryTest {
     @Autowired
     private StudentRepository underTest;
 
-    @Test
-    void findStudentByEmail() {
+    @AfterEach
+    void tearDown() {
+        underTest.deleteAll();
     }
 
     @Test
@@ -34,5 +36,17 @@ class StudentRepositoryTest {
 
         // then
         Assertions.assertThat(exists).isTrue();
+    }
+
+    @Test
+    void itShouldCheckIfStudentEmailDoesNotExist() {
+        // given
+        String email = "jamila@gmail.com";
+
+        // when
+        boolean exists = underTest.selectExistsEmail(email);
+
+        // then
+        Assertions.assertThat(exists).isFalse();
     }
 }
