@@ -17,3 +17,18 @@ psql -h localhost -p 5432 -U postgres
 ```bash
 docker-compose -f prd.yaml up -d
 ```
+
+## To run rest API
+
+see `src/main/java/com/example/demo/student/StudentController.java`
+Example: http://localhost:8080/myapp/api/v1/student (with context path configured in application properties)
+
+## Configure Swagger
+
+- [Setting Up Swagger 2 with a Spring REST API Using Springfox](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api)
+- [Failed to start bean 'documentationPluginsBootstrapper' in spring data rest](https://stackoverflow.com/questions/40241843/failed-to-start-bean-documentationpluginsbootstrapper-in-spring-data-rest)
+- [Spring Boot Change Context Path](https://www.baeldung.com/spring-boot-context-path)
+
+To see JSON, run: http://localhost:8080/myapp/v2/api-docs
+To see Swagger UI, run: http://localhost:8080/myapp/swagger-ui/
+
