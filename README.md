@@ -1,7 +1,7 @@
 # Getting Started
 
-Youtube: [Spring Boot Tutorial | Full Course [2021] [NEW]](https://youtu.be/9SGDpanrc8U)
-Validation: [Validation in Spring Boot](https://www.baeldung.com/spring-boot-bean-validation)
+- Youtube: [Spring Boot Tutorial | Full Course [2021] [NEW]](https://youtu.be/9SGDpanrc8U)
+- Validation: [Validation in Spring Boot](https://www.baeldung.com/spring-boot-bean-validation)
 
 ## For Development
 
