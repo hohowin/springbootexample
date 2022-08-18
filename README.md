@@ -1,6 +1,7 @@
 # Getting Started
 
 Youtube: [Spring Boot Tutorial | Full Course [2021] [NEW]](https://youtu.be/9SGDpanrc8U)
+Validation: [Validation in Spring Boot](https://www.baeldung.com/spring-boot-bean-validation)
 
 ## For Development
 
@@ -22,6 +23,18 @@ docker-compose -f prd.yaml up -d
 
 see `src/main/java/com/example/demo/student/StudentController.java`
 Example: http://localhost:8080/myapp/api/v1/student (with context path configured in application properties)
+
+For Post, can put the following:
+
+```json
+{
+  "id": 3,
+  "name": "Peter Parker",
+  "dob": "2004-01-05",
+  "age": 16,
+  "email": "p.parker@dailybugle.com"
+}
+```
 
 ## Configure Swagger
 

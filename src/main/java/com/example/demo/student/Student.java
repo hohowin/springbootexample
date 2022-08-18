@@ -3,6 +3,7 @@ package com.example.demo.student;
 import org.hibernate.annotations.Table;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -20,10 +21,12 @@ public class Student {
             generator = "student_sequence"
     )
     private Long id;
+    @NotBlank(message = "Name is mandatory")
     private String name;
     private LocalDate dob;
     @Transient
     private Integer age;
+    @NotBlank(message = "Email is mandatory")
     private String email;
 
     public Student() {}
